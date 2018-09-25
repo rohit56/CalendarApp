@@ -1,0 +1,17 @@
+{% extends 'myapp/base.html' %}
+{% block content %}<br><br>
+    <center><h1><u>LOGIN PAGE</u></h1></center>
+    <div class="calendar_entry container">
+
+    <form method="POST">
+    {% csrf_token %}
+        {% for field in form %}
+            {{ field.errors }}<br>
+            <label><h4>{{ field.label }}</h4></label>
+            <input type="{% if field.label == 'Password' %}password{% else %}input{% endif %}" placeholder="Enter {{ field.label }} Here..." name="{{ field.name }}" class="form-control" /><br>
+        {% endfor %}<br>
+    <center><button type="submit" class="btn btn-success">Login</button><br><br>
+    <a href="/signup">Not registered, yet? Sign Up!</a></center>
+    </form>
+</div>
+{% endblock %}
